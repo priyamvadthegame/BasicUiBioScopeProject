@@ -24,9 +24,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/angular-notifier/styles.css",
+              "./node_modules/font-awesome/css/font-awesome.css",
+              {
+                "input": "./node_modules/bootstrap/dist/css/bootstrap.css"
+                
+              }
             ],
-            "scripts": []
+
+            "scripts": ["./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -119,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bio-scope-project"
+    }
+  },
+  "defaultProject": "bio-scope-project",
+  "cli": {
+    "analytics": "4ade62b1-889b-4679-9fc9-1b5024e08024"
+  }
 }
