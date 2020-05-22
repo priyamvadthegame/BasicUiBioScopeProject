@@ -1,0 +1,100 @@
+<head>
+  <title>User Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<div class="container bootstrap snippet" >
+    <div class="row">
+          <div class="col-sm-10"><h1>User Profile</h1></div>
+        <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="../../../assets/images/single-pizza-pic.png"></a></div>
+    </div>
+    <div class="row">
+          <div class="col-sm-3"><!--left col-->
+              
+
+      <div class="text-center">
+        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload a different photo...</h6>
+        <input type="file" class="text-center center-block file-upload">
+      </div><br>          
+               
+          <div class="panel panel-default">
+          </div>
+          
+        </div><!--/col-3-->
+        <div class="col-sm-9">
+           
+
+              
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+              
+                  <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()" (ngChange)="onChanges()" class="form" action="##" method="post">
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="username"><h4>Username</h4></label>
+                              <input type="text" class="form-control" formControlName="username" [(ngModel)]="username" minlength="3" id="username" placeholder="username" title="enter your User Name">
+                          </div>
+                          <div *ngIf="userProfileForm.controls['username'].invalid && (userProfileForm.controls['username'].dirty || userProfileForm.controls['username'].touched)" class="alert alert-danger">
+                            <div *ngIf="userProfileForm.controls['username'].hasError('required')">
+                              Username is required.
+                            </div>
+                            <div *ngIf="userProfileForm.controls['username'].hasError('minlength')">
+                              Username is less than 3 characters.
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="email"><h4>Last name</h4></label>
+                              <input disabled type="text" class="form-control" formControlName="email" [(ngModel)]="email" minlength="3" id="email" placeholder="last name" title="enter your last name">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                                  <button class="btn btn-lg btn-success" ><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                   <br><br>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                          
+                        <div class="col-xs-6">
+                            <label for="password"><h4>Old Password</h4></label>
+                            <input type="password" class="form-control" formControlName="password" [(ngModel)]="password" id="password" placeholder="password" title="enter your password.">
+                        </div>
+                        <div *ngIf="userProfileForm.controls['password'].invalid && (userProfileForm.controls['password'].dirty || userProfileForm.controls['password'].touched)" class="alert alert-danger">
+                            <div *ngIf="userProfileForm.controls['password'].hasError('required')">
+                            Please enter the password.
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        
+                        <div class="col-xs-6">
+                          <label for="password2"><h4>New Password</h4></label>
+                            <input type="password" class="form-control" formControlName="password2" [(ngModel)]="password2" id="password2" placeholder="New password" title="enter your password2.">
+                        </div>
+                    </div>
+                    <div *ngIf="userProfileForm.controls['password2'].invalid && (userProfileForm.controls['password2'].dirty || userProfileForm.controls['password2'].touched)" class="alert alert-danger">
+                        <div *ngIf="userProfileForm.controls['password2'].hasError('required')">
+                         New Password is required
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-xs-12">
+                           <br>
+                             <button class="btn btn-lg btn-success" (click)="changePassword()" ><i class="glyphicon glyphicon-ok-sign"></i> change Password</button>
+                              <br><br>
+                       </div>
+                 </div>
+                  </form>
+              
+             </div><!--/tab-pane-->
+             
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->

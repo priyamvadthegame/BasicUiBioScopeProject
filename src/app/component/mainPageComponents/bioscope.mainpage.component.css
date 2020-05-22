@@ -1,0 +1,31 @@
+.carousel-containers img
+  {
+    height:600px;
+  }
+  .carousel-containers  {
+      padding:0;
+  }
+
+  p
+  {
+      height:fit-content;
+      width: fit-content;
+  }
+
+  #footer{
+    color:white;
+    text-align:center;
+  }
+  
+  .social-icon{
+      margin: 0px 10px;
+  }
+  
+  s{
+    color:#fff;
+    background: black;
+  }
+  
+  .footer-section{
+    background-color: black;
+  }

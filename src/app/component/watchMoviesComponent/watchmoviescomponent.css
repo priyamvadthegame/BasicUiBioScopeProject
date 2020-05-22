@@ -1,0 +1,45 @@
+.banner{
+    position: relative;
+    width: 100%;
+    min-height:100vh;
+    padding:0 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .banner .content{
+    max-width: 550px;
+  }
+  
+  .banner .content h2{
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 2.5em;
+    letter-spacing: 0.2em;
+    color: #fff;
+  }
+  
+  .banner .content p{
+    font-size: 1.1em;
+    font-weight:100;
+    letter-spacing: 0.03em;
+    color: #fff;
+    line-height: 1.5em;
+    margin: 15px 0 35px;
+  }
+  p .more{
+    padding: 0 100px;
+  }
+ 
+
+ .download-button{
+   margin: 5% 3% 5% 0;
+ }
+
+ .maindiv
+ {
+   height: 100%;
+   width: 100%;
+ }
+ 

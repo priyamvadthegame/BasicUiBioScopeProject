@@ -1,0 +1,26 @@
+.navbar-brand{
+    color:white;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .navbar-brand:before{
+    color: red;
+    content: "Bio";
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  #header{
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+  }
+  
+  .navbar{
+    background: rgba(1,0,0,1);
+    position:-webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index:99999;;
+  }
+ 
+  

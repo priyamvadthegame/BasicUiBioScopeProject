@@ -27,6 +27,7 @@ export class BioScopeLogInComponent {
     let username=String(this.userProfileForm.get("email").value)
     let password=String(this.userProfileForm.get("password").value)
     console.log(username)
-    this.userService.userLogin({"email":username,"password":password}).subscribe(response=>console.log(response))
+    this.userService.userLogin({"email":username,"password":password}).subscribe(response=>{console.log(response)
+    sessionStorage.setItem("sessionId",JSON.parse(JSON.stringify(response)).token)})
   }
 }

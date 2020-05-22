@@ -7,17 +7,21 @@ import {BioScopeLogInComponent} from './component/loginAndSignupComponents/biosc
 import {BioScopeRegisterComponent} from './component/loginAndSignupComponents/bioscope.register'
 import {ProductService} from './services/bioscope.services'
 import {HttpClientModule} from '@angular/common/http'
+import {BioScopeMainPageComponent}  from './component/mainPageComponents/bioscope.mainpage.component'
+import {CompleteImageUrl} from './pipes/imageUrlPipes'
+import {MovieDescription }  from './pipes/moveDescriptionPipe'
+import { BioScopeWatchMovieComponent} from './component/watchMoviesComponent/watchmoviescomponent'
+import {Data} from './providers/movieData'
 @NgModule({
   declarations: [
-    AppComponent,BioScopeLogInComponent,BioScopeRegisterComponent
-  ],
+    AppComponent,BioScopeLogInComponent,BioScopeRegisterComponent,BioScopeMainPageComponent,CompleteImageUrl,MovieDescription,BioScopeWatchMovieComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ProductService],
+  providers: [ProductService,Data],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,31 +11,35 @@
 							<span class="input-group-text"><i class="fa fa-user"></i></span>
 						</div>
 						<input type="text" class="form-control" placeholder="username"  formControlName="username" minlength="3">
-						<div *ngIf="userProfileForm.controls['username'].invalid && (userProfileForm.controls['username'].dirty || userProfileForm.controls['username'].touched)" class="alert alert-danger">
-							<div *ngIf="userProfileForm.controls['username'].hasError('minlength')" class="alert alert-danger"> Username must be atleast 3 characters </div> 
-							<div *ngIf="userProfileForm.controls['username'].hasError('required')" class="alert alert-danger"> Username Field cannot be null </div> 
-						</div>	
-                    </div>
+
+					</div>
+					<div  class="alert alert-danger" *ngIf="userProfileForm.controls['username'].invalid && (userProfileForm.controls['username'].dirty || userProfileForm.controls['username'].touched)" class="alert alert-danger">
+						<p *ngIf="userProfileForm.controls['username'].hasError('required')"> Username Field cannot be null </p>
+						<p *ngIf="userProfileForm.controls['username'].hasError('minlength')"> Username must be atleast 3 characters </p> 
+					</div>
+						
+
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-envelope"></i></span>
 						</div>
 						<input type="text" class="form-control" placeholder="email"  formControlName="email">
-						<div *ngIf="userProfileForm.controls['email'].invalid && (userProfileForm.controls['email'].dirty || userProfileForm.controls['email'].touched)" class="alert alert-danger">
-							<div *ngIf="userProfileForm.controls['email'].hasError('required')" class="alert alert-danger"> Email Field cannot be null </div>
-							<div *ngIf="userProfileForm.controls['email'].hasError('pattern')" class="alert alert-danger"> Email is invalid </div>  
-						</div>
-                    </div>
+						
+					</div>
+					<div  class="alert alert-danger" *ngIf="userProfileForm.controls['email'].invalid && (userProfileForm.controls['email'].dirty || userProfileForm.controls['email'].touched)" class="alert alert-danger">
+						<div *ngIf="userProfileForm.controls['email'].hasError('required')"> Email Field cannot be null </div>
+						<div *ngIf="userProfileForm.controls['email'].hasError('pattern')"> Email is invalid </div>  
+					</div>
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-key"></i></span>
 						</div>
 						<input type="text" class="form-control" formControlName="password" placeholder="password" minlength="8">
-						<div *ngIf="userProfileForm.controls['password'].invalid && (userProfileForm.controls['password'].dirty || userProfileForm.controls['password'].touched)" class="alert alert-danger">
-							<div *ngIf="userProfileForm.controls['password'].hasError('minlength')" class="alert alert-danger"> Password must be atleast 8 characters </div> 
-							<div *ngIf="userProfileForm.controls['password'].hasError('required')" class="alert alert-danger"> Password Field cannot be null </div> 
 						</div>
-					</div>
+						<div  class="alert alert-danger" *ngIf="userProfileForm.controls['password'].invalid && (userProfileForm.controls['password'].dirty || userProfileForm.controls['password'].touched)" class="alert alert-danger">
+							<div *ngIf="userProfileForm.controls['password'].hasError('minlength')" > Password must be atleast 8 characters </div> 
+							<div *ngIf="userProfileForm.controls['password'].hasError('required')"> Password Field cannot be null </div> 
+						</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-repeat"></i></span>
