@@ -1,5 +1,6 @@
-<div class="container-fluid carousel-containers">
-  <div class="row">
+<div class="main-div">
+<div class="container carousel-containers">
+  <div class="row" *ngIf="false">
     <div class="col-md-12">
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -40,19 +41,19 @@
   </div>
   <div class="row">
       <div class="col-md-12">
-        <h3 id="text-movies-availaible">Movies Availaible</h3>
+        <h3 id="text-movies-availaible ml-md-2" class="text-white">Movies Availaible</h3>
       </div>
   </div>
-  <div class="row">
+<div class="row">
       
-      <div class="col-md-3" *ngFor="let movies of movieList">
+      <div class="col-md-4 mx-md-0  my-md-3" *ngFor="let movies of movieList">
       <!-- Card -->
       <div >
           <div class="card">
 
             <!-- Card image -->
             <div class="view overlay">
-              <img class="card-img-top" src="{{movies.posterPath|imageurl}}"
+              <img class="card-img-top" [alt]="movies.title" src="{{movies.posterPath|imageurl}}"
                 alt="Card image cap">
               <a href="#!">
                 <div class="mask rgba-white-slight"></div>
@@ -63,12 +64,12 @@
             <div class="card-body">
 
               <!-- Title -->
-              <h4 class="card-title">{{movies.title}}</h4>
+              <h4 class="card-title text-white">{{movies.title}}</h4>
               <!-- Text -->
-              <p class="card-text">
+              <p class="card-text text-white">
                 {{movies.description|desc}}</p>
               <!-- Button -->
-              <a  class="btn btn-primary"(click)="watchMovieButtonClickEvent(movies)">Watch Now</a>
+              <a  class="btn btn-info"(click)="watchMovieButtonClickEvent(movies)">Watch Now</a>
 
             </div>
 
@@ -79,4 +80,5 @@
     
   </div>
   
+</div>
 </div>

@@ -1,27 +1,29 @@
-    <div class="maindiv" [ngStyle]="{'background-image':'linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.9)),linear-gradient(to left, rgba(0,0,0,0),rgba(0,0,0,0.9)),url('+ movieposter + ')','background-repeat': 'no-repeat','background-attachment': 'fixed',  
-    'background-size': 'cover', 'background-position': 'center'}">
-     <div class="banner" >
-        <div class="content">
-          <h2>{{this.movieObject.title}}</h2>
-          <p>
-            {{this.movieObject.description}}
-          </p>
-          <a type="button" class="btn btn-dark btn-lg download-button" href="#videocontainer"  pageScroll><i class="fa fa-google-play fa-1x"></i>Watch Now</a>
-          <a type="button" [href]="movieObject.url" class="btn btn-outline-light btn-lg download-button" [download]="movieObject.title"><i class="fa fa-arrow-alt-circle-down fa-1x"></i> Download</a>
-          <br/>
+<div class="maindiv">    
+    <div [ngStyle]="{'background-image':'linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.9)),linear-gradient(to left, rgba(0,0,0,0),rgba(0,0,0,0.9)),url('+ movieposter + ')','background-repeat': 'no-repeat','background-attachment': 'fixed','height':'100%','width':'100%',  
+      'background-size': 'cover', 'background-position': 'center'}">
+      <div class="banner" >
+          <div class="content">
+            <h2>{{this.movieObject.title}}</h2>
+            <p>
+              {{this.movieObject.description}}
+            </p>
+            <a  type="button" class="btn btn-dark btn-lg download-button" href="./#videocontainer"><i class="fa fa-google-play fa-1x"></i>Watch Now</a>
+            <a type="button" [href]="movieObject.url" class="btn btn-outline-light btn-lg download-button" [download]="movieObject.title"><i class="fa fa-arrow-alt-circle-down fa-1x"></i> Download</a>
+            <br/>
+          </div>
         </div>
-      </div>
-      <div class="container" id="videocontainer">
-        <div class="row">
-          <div class="col-md-12">
-        <div class="viseoplayer">
-            <video id="my_video_1" class="video-js vjs-default-skin" width="640px" height="267px" controls preload="none"
-              data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
-              <source [src]="movieObject.url" type='video/mp4' />
-              <source [src]="movieObject.url" type='video/webm' />
-            </video>
-        </div>
+        <div class="container-fluid" id="videocontainer">
+          <div class="row">
+            <div class="col-md-12">
+          <div class="viseoplayer">
+              <video id="my_video_1" class="video-js vjs-default-skin" width="640px" height="267px" controls preload="none"
+                data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+                <source [src]="movieObject.url" type='video/mp4' />
+                <source [src]="movieObject.url" type='video/webm' />
+              </video>
+            </div>
           </div>
         </div>
       </div>
-      </div>
+    </div>
+  </div>

@@ -7,7 +7,6 @@ import {Data} from '../../providers/movieData'
   selector: 'mainpage',
   templateUrl: './bioscope.mainpage.component.html',
   styleUrls: ['./bioscope.mainpage.component.css'],
-  encapsulation:ViewEncapsulation.None
 })
 export class BioScopeMainPageComponent implements OnInit{
   public userProfileForm: FormGroup;
@@ -36,7 +35,7 @@ export class BioScopeMainPageComponent implements OnInit{
     watchMovieButtonClickEvent(movie:Object)
     {
       localStorage.setItem("movieObj",JSON.stringify(movie))
-      this.route.navigate(['/mainpage/watch'])
+      this.route.navigate(['/watch'])
     }
 
     ngOnInit()

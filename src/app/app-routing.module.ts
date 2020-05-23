@@ -2,12 +2,12 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import {BioScopeLogInComponent} from './component/loginAndSignupComponents/bioscope.login'
-import {BioScopeRegisterComponent} from './component/loginAndSignupComponents/bioscope.register'
+import {BioScopeRegisterComponent} from './component/signUpComponent/bioscope.register'
 import {BioScopeMainPageComponent}  from './component/mainPageComponents/bioscope.mainpage.component'
 import { BioScopeWatchMovieComponent} from './component/watchMoviesComponent/watchmoviescomponent'
 const routes: Routes = [{
   path: '',
-  redirectTo:'mainpage',
+  redirectTo:'loginpage',
   pathMatch: 'full'
 },
 {
@@ -24,7 +24,7 @@ const routes: Routes = [{
   component:BioScopeMainPageComponent
 },
 {
-  path:'mainpage/watch',
+  path:'watch',
   component:BioScopeWatchMovieComponent
 }];
 

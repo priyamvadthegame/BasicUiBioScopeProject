@@ -7,7 +7,6 @@ import {Data} from '../../providers/movieData'
   selector: 'watchmovie',
   templateUrl: './watchmoviescomponent.html',
   styleUrls: ['./watchmoviescomponent.css'],
-  encapsulation:ViewEncapsulation.None
 })
 export class BioScopeWatchMovieComponent implements OnInit{
   public movieObject;

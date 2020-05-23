@@ -5,7 +5,6 @@ import {ProductService} from '../../services/bioscope.services'
   selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  encapsulation:ViewEncapsulation.None
 })
 export class BioScopeRegisterComponent {
   public userProfileForm: FormGroup;
@@ -27,6 +26,7 @@ export class BioScopeRegisterComponent {
     let username=String(this.userProfileForm.get("username").value);
     let email=String(this.userProfileForm.get("email").value);
     let password=String(this.userProfileForm.get("password").value);
-    this.userService.userRegister({"name":username,"email":email,"password":password}).subscribe(response=>console.log(response))
+    this.userService.userRegister({"name":username,"email":email,"password":password}).
+    subscribe(response=>console.log(response))
   }
 }

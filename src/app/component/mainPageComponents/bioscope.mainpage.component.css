@@ -1,11 +1,23 @@
-.carousel-containers img
+
+  .main-div
   {
-    height:600px;
+    background-color: black;
   }
   .carousel-containers  {
       padding:0;
   }
-
+  .carousel-inner img{
+    background-position:center;
+    width: fit-content;
+  }
+  .card-body
+  {
+    background-color: black;
+  }
+  .card-img-top
+  {
+      height:300px;
+  }
   p
   {
       height:fit-content;

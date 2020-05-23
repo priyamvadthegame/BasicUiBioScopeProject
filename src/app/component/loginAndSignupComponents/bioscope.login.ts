@@ -1,16 +1,16 @@
 import { Component,ViewEncapsulation} from '@angular/core';
 import {ProductService} from '../../services/bioscope.services'
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  encapsulation:ViewEncapsulation.None
 })
 export class BioScopeLogInComponent {
  
   public userProfileForm:FormGroup;
-  constructor(private userService: ProductService)
+  constructor(private userService: ProductService,private router:Router)
   {
       this.createForm()
   }
@@ -28,6 +28,8 @@ export class BioScopeLogInComponent {
     let password=String(this.userProfileForm.get("password").value)
     console.log(username)
     this.userService.userLogin({"email":username,"password":password}).subscribe(response=>{console.log(response)
-    sessionStorage.setItem("sessionId",JSON.parse(JSON.stringify(response)).token)})
+    sessionStorage.setItem("sessionId",JSON.parse(JSON.stringify(response)).token)
+    this.router.navigateByUrl("/mainpage");
+  })
   }
 }

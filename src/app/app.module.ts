@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BioScopeLogInComponent} from './component/loginAndSignupComponents/bioscope.login'
-import {BioScopeRegisterComponent} from './component/loginAndSignupComponents/bioscope.register'
+import {BioScopeRegisterComponent} from './component/signUpComponent/bioscope.register'
 import {ProductService} from './services/bioscope.services'
 import {HttpClientModule} from '@angular/common/http'
 import {BioScopeMainPageComponent}  from './component/mainPageComponents/bioscope.mainpage.component'
