@@ -12,6 +12,7 @@ export class BioScopeWatchMovieComponent implements OnInit{
   public movieObject;
   public movieposter:string;
   public actorArray;
+  public recommendedArray;
   constructor(private formBuilder: FormBuilder, private movieService: ProductService,private router:ActivatedRoute,private route:Router,private data:Data)
     {
     }
@@ -37,6 +38,7 @@ export class BioScopeWatchMovieComponent implements OnInit{
             }
         }
         this.actorArray=this.movieObject.actors
+        this.recommendedArray=this.movieObject.recommendation
         console.log(this.movieposter)
         }
       }

@@ -40,4 +40,28 @@
  .actors img
  {
   border-radius: 50%;
+  height:150px;
+  width:150px;
  }
+
+
+ .info-widget {
+  width: 31.75%;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.middle {
+  float: left;
+  width: 90%;
+  overflow: auto;
+  /*will change this to hidden later to deny scolling to user*/
+  white-space: nowrap;
+}
+
+.actor-name
+{
+  text-align:justify;
+  margin-left: 30px;
+}
+

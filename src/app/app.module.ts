@@ -10,13 +10,15 @@ import {HttpClientModule} from '@angular/common/http'
 import {BioScopeMainPageComponent}  from './component/mainPageComponents/bioscope.mainpage.component'
 import {CompleteImageUrl} from './pipes/imageUrlPipes'
 import {CompleteTrailerUrl} from './pipes/trailerlinkpipe'
+import {CompleteImageUrlWr} from './pipes/imageUrlWithoutArrayPipes'
 import {CompleteBackDropImageUrl} from './pipes/imageUrlBackDropPath'
 import {MovieDescription }  from './pipes/moveDescriptionPipe'
 import { BioScopeWatchMovieComponent} from './component/watchMoviesComponent/watchmoviescomponent'
 import {Data} from './providers/movieData'
 @NgModule({
   declarations: [
-    AppComponent,BioScopeLogInComponent,BioScopeRegisterComponent,BioScopeMainPageComponent,CompleteImageUrl,MovieDescription,BioScopeWatchMovieComponent,CompleteTrailerUrl,CompleteBackDropImageUrl],
+    AppComponent,BioScopeLogInComponent,BioScopeRegisterComponent,BioScopeMainPageComponent,CompleteImageUrl,MovieDescription,BioScopeWatchMovieComponent
+    ,CompleteTrailerUrl,CompleteBackDropImageUrl,CompleteImageUrlWr],
   imports: [
     BrowserModule,
     AppRoutingModule,
