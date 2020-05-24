@@ -25,5 +25,20 @@
           </div>
         </div>
       </div>
+      <br><br>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+              <h3 class="text-white">Cast & Crews</h3>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1">
+            <div class="actors" *ngFor="let actor of actorArray">
+                <img [src]="actor.actor_poster|imageurl"/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>

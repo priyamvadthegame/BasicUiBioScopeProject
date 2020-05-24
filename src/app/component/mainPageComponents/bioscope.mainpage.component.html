@@ -1,4 +1,5 @@
 <div class="main-div">
+<!--
 <div class="container carousel-containers">
   <div class="row" *ngIf="false">
     <div class="col-md-12">
@@ -11,8 +12,8 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block w-100" [src]="topThreeMovieList[0].backdrop|imageurl" alt="First slide">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>{{topThreeMovieList[0].title}}</h5>
+            <div class="carousel-caption d-none d-md-block text-truncate ">
+              {{topThreeMovieList[0].title}}
             </div>
           </div>
           <div class="carousel-item">
@@ -39,6 +40,8 @@
       </div>
    </div>
   </div>
+-->
+<div class="container">
   <div class="row">
       <div class="col-md-12">
         <h3 id="text-movies-availaible ml-md-2" class="text-white">Movies Availaible</h3>
@@ -46,30 +49,35 @@
   </div>
 <div class="row">
       
-      <div class="col-md-4 mx-md-0  my-md-3" *ngFor="let movies of movieList">
+      <div class="col-md-4 mx-md-0  my-md-3" *ngFor="let movies of movieList" >
       <!-- Card -->
       <div >
           <div class="card">
 
             <!-- Card image -->
-            <div class="view overlay">
-              <img class="card-img-top" [alt]="movies.title" src="{{movies.posterPath|imageurl}}"
-                alt="Card image cap">
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
+            <div  class="view overlay" (mouseenter) ="movies.hover=false"  (mouseleave) ="movies.hover=true">
+              <div>
+                <div *ngIf="movies.hover"   class="movie-poster">
+                    <img  class="card-img-top" [alt]="movies.title" src="{{movies.posters|imageurl}}"
+                      alt="Card image cap">
+                  </div>
+                <div class="videoplayer" *ngIf="!movies.hover" >
+                  <iframe width="fit-content" height="400px" class="embed-responsive"
+                    [src]="getSaveTrailerUrlLink(movies.videos|trailer)" allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
             </div>
 
             <!-- Card content -->
             <div class="card-body">
 
               <!-- Title -->
-              <h4 class="card-title text-white">{{movies.title}}</h4>
+              <h4 (click)="watchMovieButtonClickEvent(movies)" class="card-title text-white movie-title">{{movies.title}}</h4>
               <!-- Text -->
               <p class="card-text text-white">
                 {{movies.description|desc}}</p>
               <!-- Button -->
-              <a  class="btn btn-info"(click)="watchMovieButtonClickEvent(movies)">Watch Now</a>
 
             </div>
 

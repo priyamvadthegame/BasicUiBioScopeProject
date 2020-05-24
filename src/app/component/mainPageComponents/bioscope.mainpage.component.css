@@ -16,7 +16,17 @@
   }
   .card-img-top
   {
-      height:300px;
+     height: 400px;
+  }
+  .movie-title
+  {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .movie-title 
+  {
+      cursor: pointer;
   }
   p
   {

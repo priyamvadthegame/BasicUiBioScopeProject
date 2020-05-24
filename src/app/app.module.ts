@@ -9,12 +9,13 @@ import {ProductService} from './services/bioscope.services'
 import {HttpClientModule} from '@angular/common/http'
 import {BioScopeMainPageComponent}  from './component/mainPageComponents/bioscope.mainpage.component'
 import {CompleteImageUrl} from './pipes/imageUrlPipes'
+import {CompleteTrailerUrl} from './pipes/trailerlinkpipe'
 import {MovieDescription }  from './pipes/moveDescriptionPipe'
 import { BioScopeWatchMovieComponent} from './component/watchMoviesComponent/watchmoviescomponent'
 import {Data} from './providers/movieData'
 @NgModule({
   declarations: [
-    AppComponent,BioScopeLogInComponent,BioScopeRegisterComponent,BioScopeMainPageComponent,CompleteImageUrl,MovieDescription,BioScopeWatchMovieComponent],
+    AppComponent,BioScopeLogInComponent,BioScopeRegisterComponent,BioScopeMainPageComponent,CompleteImageUrl,MovieDescription,BioScopeWatchMovieComponent,CompleteTrailerUrl],
   imports: [
     BrowserModule,
     AppRoutingModule,
