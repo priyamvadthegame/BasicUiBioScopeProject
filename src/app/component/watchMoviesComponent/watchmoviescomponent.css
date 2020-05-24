@@ -47,21 +47,25 @@
 
  .info-widget {
   width: 31.75%;
-  border: 1px solid black;
   display: inline-block;
 }
 
 .middle {
   float: left;
   width: 90%;
-  overflow: auto;
+  overflow: hidden;
   /*will change this to hidden later to deny scolling to user*/
   white-space: nowrap;
 }
 
-.actor-name
+.caption
 {
-  text-align:justify;
-  margin-left: 30px;
+  display: block;
+}
+
+.lrbutton
+{
+  height:150px;
+  background-color: rgba(0,0.5,0.5,0.1)
 }
 

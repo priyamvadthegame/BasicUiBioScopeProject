@@ -1,4 +1,4 @@
-import { Component,ViewEncapsulation, OnInit} from '@angular/core';
+import { Component,ViewEncapsulation, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {ProductService} from '../../services/bioscope.services'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -13,10 +13,25 @@ export class BioScopeWatchMovieComponent implements OnInit{
   public movieposter:string;
   public actorArray;
   public recommendedArray;
+  @ViewChild('ActorContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
+  @ViewChild('RecommendationContent', { read: ElementRef }) public reccmContent: ElementRef<any>;
   constructor(private formBuilder: FormBuilder, private movieService: ProductService,private router:ActivatedRoute,private route:Router,private data:Data)
     {
     }
-
+    public scrollRight(): void {
+      this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+    }
+  
+    public scrollLeft(): void {
+      this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
+    }
+    public RecmmscrollRight(): void {
+      this.reccmContent.nativeElement.scrollTo({ left: (this.reccmContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+    }
+  
+    public RecmmscrollLeft(): void {
+      this.reccmContent.nativeElement.scrollTo({ left: (this.reccmContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
+    }
     ngOnInit()
     {
 
