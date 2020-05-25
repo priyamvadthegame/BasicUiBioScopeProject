@@ -11,7 +11,8 @@ import { NotifierService } from "angular-notifier";
 })
 export class BioScopeWatchMovieComponent implements OnInit{
   public movieObject;
-  public movieposter:string;
+  public movieposterthumb:string;
+  public movieposter;
   public actorArray;
   public recommendedArray;
   @ViewChild('ActorContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
@@ -52,10 +53,17 @@ export class BioScopeWatchMovieComponent implements OnInit{
         {
             if(backdrops[i].height>=String(window.outerHeight)&&backdrops[i].width>=String(window.outerWidth))
             {
-              this.movieposter=`https://image.tmdb.org/t/p/original${backdrops[i].backdropPath}`
+              this.movieposterthumb=`https://image.tmdb.org/t/p/original${backdrops[i].backdropPath}`
               break;
             }
         }
+        if(backdrops.length>0)
+        {
+          let random=Math.floor(Math.random() *backdrops.length)
+          this.movieposter=`https://image.tmdb.org/t/p/original${backdrops[random].backdropPath}`
+                
+        }
+        
         this.actorArray=(this.movieObject.actors).filter((name)=> {
           if(name.actor_poster != null&&name.hasOwnProperty('actor_poster')) {
           return true

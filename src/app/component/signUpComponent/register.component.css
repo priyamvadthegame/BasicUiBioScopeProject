@@ -4,7 +4,7 @@
 
 .main-div
 {
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+    background-image: url('https://wallpaperplay.com/walls/full/c/b/4/188875.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Numans', sans-serif;
@@ -26,7 +26,7 @@ background-color: rgba(0,0,0,0.5) !important;
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
-color: #FFC312;
+color: #ed3f38;
 }
 
 .social_icon span:hover{
@@ -53,7 +53,7 @@ top: -45px;
 
 .input-group-prepend span{
 width: 50px;
-background-color: #FFC312;
+background-color:#ed3f38;
 color: black;
 border:0 !important;
 }
@@ -78,7 +78,7 @@ margin-right: 5px;
 
 .login_btn{
 color: black;
-background-color: #FFC312;
+background-color:#ed3f38;
 width: 100px;
 }
 
