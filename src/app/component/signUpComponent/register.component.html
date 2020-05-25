@@ -47,8 +47,14 @@
 							</div>
 							<input type="password" class="form-control" formControlName="repassword"  placeholder="retype password">
 						</div>
-						<div class="form-group float-right "  (click)="register()">
-							<input type="submit" value="SignUp" class=" login_btn">
+						<div class="form-group float-right ">
+							<input type="submit" (click)="register()" [disabled]="userProfileForm.valid" value="SignUp" class=" login_btn">
+						</div>
+						<div class="progress-spinner embed-responsive" *ngIf="spinner">
+							<mat-progress-spinner
+								color="accent"
+								mode="indeterminate">
+							</mat-progress-spinner>
 						</div>
 					</form>
 				</div>

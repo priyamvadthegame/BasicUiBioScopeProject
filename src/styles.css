@@ -5,10 +5,3 @@ html, body {
     width: 100%;
     background-color: black;
   }
-
-  .progress-spinner
-{
-    position:fixed;
-    top: 50%;
-    left: 50%;
-}

@@ -91,3 +91,12 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+
+
+.progress-spinner
+{
+    position:fixed;
+    top:60%;
+    left:47%;
+}
+

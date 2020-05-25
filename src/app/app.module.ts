@@ -28,20 +28,7 @@ import { NotifierModule } from "angular-notifier";
     FormsModule,ReactiveFormsModule,
     HttpClientModule,DemoMaterialModule,
     Ng2PageScrollModule,
-    NotifierModule.withConfig({
-      position: {
- 
-        horizontal: {
-          position: 'right',
-        distance: 12
-      },
-       vertical: {
-             position: 'top',
-             distance: 12
-            }
-       
-      }
-    })
+    NotifierModule
   ],
   providers: [ProductService,Data],
   bootstrap: [AppComponent]

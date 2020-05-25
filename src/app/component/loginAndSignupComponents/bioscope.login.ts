@@ -36,7 +36,11 @@ export class BioScopeLogInComponent implements OnInit {
     this.router.navigateByUrl("/mainpage");
     
   },
-  error=>{console.log(error);
+  error=>{
+    if(error.status==404)
+    { console.log("hello error")
+      this.notifier.notify("error","Wrong Email Or Password");
+    }
    this.spinner=false})
   }
   ngOnInit()

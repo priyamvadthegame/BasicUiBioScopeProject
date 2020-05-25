@@ -52,12 +52,20 @@ export class BioScopeWatchMovieComponent implements OnInit{
         {
             if(backdrops[i].height>=String(window.outerHeight)&&backdrops[i].width>=String(window.outerWidth))
             {
-              this.movieposter=`https://image.tmdb.org/t/p/w500${backdrops[i].backdropPath}`
+              this.movieposter=`https://image.tmdb.org/t/p/original${backdrops[i].backdropPath}`
               break;
             }
         }
-        this.actorArray=this.movieObject.actors
-        this.recommendedArray=this.movieObject.recommendation
+        this.actorArray=(this.movieObject.actors).filter((name)=> {
+          if(name.actor_poster != null&&name.hasOwnProperty('actor_poster')) {
+          return true
+          }
+          })
+        this.recommendedArray=this.movieObject.recommendation.filter((name)=> {
+          if(name.movie_poster_data != null&&name.hasOwnProperty('movie_poster_data')) {
+          return true
+          }
+          })
         console.log(this.movieposter)
         }
       }

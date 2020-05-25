@@ -51,3 +51,10 @@
   .footer-section{
     background-color: black;
   }
+
+  .progress-spinner
+{
+    position:fixed;
+    top: 50%;
+    left: 50%;
+}
