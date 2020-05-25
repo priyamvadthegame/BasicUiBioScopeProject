@@ -11,6 +11,10 @@
     height:100%;
 }
 
+.example-margin {
+    margin: 0 10px;
+  }
+  
 .container{
 height: 100%;
 align-content: center;

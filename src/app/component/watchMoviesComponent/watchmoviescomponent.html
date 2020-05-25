@@ -38,10 +38,11 @@
               <div style="float: left">
                 <button class="lrbutton text-white embed-responsive" (click)="scrollLeft()">&#8592;</button>
                 </div>
-              <div #ActorContent class="middle">
+              <div #ActorContent class="middle" >
                 <div class="info-widget" *ngFor="let actor of actorArray">
-                  <img class="text-white embed-responsive" [src]="actor.actor_poster|imageurlwr" [alt]="actor.actor"/>
-                  <h6 class="text-white caption actor-name embed-responsive">{{actor.actor}}</h6>
+                  <div *ngIf="(actor.actor_poster)!=null">
+                        <img class="text-white embed-responsive"  [src]="actor.actor_poster|imageurlwr" [alt]="actor.actor"/>
+                    </div>
                 </div>
             </div>
             <div style="float: right">
@@ -60,14 +61,13 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="actors">
+            <div class="recommendation">
               <div style="float: left">
                 <button class="lrbutton text-white embed-responsive" (click)="RecmmscrollLeft()">&#8592;</button>
                 </div>
               <div #RecommendationContent class="middle">
                 <div class="info-widget" *ngFor="let recm of recommendedArray">
                   <img class="text-white embed-responsive" [src]="recm.movie_poster_data" [alt]="recm.recommended_movie"/>
-                  <h6 class="text-white actor-name caption">{{recm.recommended_movie}}</h6>
                 </div>
               </div>
               <div style="float: right">

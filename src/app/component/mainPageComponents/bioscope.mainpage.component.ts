@@ -15,6 +15,7 @@ export class BioScopeMainPageComponent implements OnInit{
   public topThreeMovieList:Array<any>=[]
   public onNotHovered=true
   public onHovered=false
+  public spinner=false;
   constructor(private formBuilder: FormBuilder, private movieService: ProductService,private route:Router,private data:Data,private sanitizer:DomSanitizer)
     {
         
@@ -36,8 +37,9 @@ export class BioScopeMainPageComponent implements OnInit{
     }
 
     getAllMovieList()
-    {
-        this.movieService.getAllMovies(sessionStorage.getItem("sessionId")).subscribe(response=>{console.log(response); this.movieList=response;  this.getFirstThreeMovieList();})
+    {   
+      this.spinner=true;  
+      this.movieService.getAllMovies(localStorage.getItem("sessionId")).subscribe(response=>{console.log(response); this.movieList=response;  this.getFirstThreeMovieList();this.spinner=false})
     }
 
     watchMovieButtonClickEvent(movie:Object)
@@ -58,10 +60,11 @@ export class BioScopeMainPageComponent implements OnInit{
 
     ngOnInit()
     {
-        if(sessionStorage.length==0||sessionStorage.getItem("sessionId")=="")
-        {
-          this.route.navigateByUrl("/loginpage")
-        }
+      this.spinner=false  
+      if(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")==="")
+      {
+            this.route.navigateByUrl("/loginpage")
+      }
         else
         {
           this.getAllMovieList();

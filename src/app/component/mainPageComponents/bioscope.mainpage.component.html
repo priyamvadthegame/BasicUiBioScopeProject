@@ -41,7 +41,13 @@
    </div>
   </div>
 -->
-<div class="container">
+<div class="progress-spinner" *ngIf="spinner">
+  <mat-progress-spinner
+    color="accent"
+        mode="indeterminate">
+    </mat-progress-spinner>
+</div>
+<div class="container" *ngIf="!spinner">
   <div class="row">
       <div class="col-md-12">
         <h3 id="text-movies-availaible ml-md-2" class="text-white">Movies Availaible</h3>

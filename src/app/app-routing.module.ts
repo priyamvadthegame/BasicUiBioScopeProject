@@ -7,7 +7,7 @@ import {BioScopeMainPageComponent}  from './component/mainPageComponents/bioscop
 import { BioScopeWatchMovieComponent} from './component/watchMoviesComponent/watchmoviescomponent'
 const routes: Routes = [{
   path: '',
-  redirectTo:'loginpage',
+  redirectTo:'mainpage',
   pathMatch: 'full'
 },
 {

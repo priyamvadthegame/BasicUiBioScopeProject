@@ -1,4 +1,10 @@
 <div class="main-div">
+	<div class="progress-spinner" *ngIf="spinner">
+		<mat-progress-spinner
+			color="accent"
+        	mode="indeterminate">
+    	</mat-progress-spinner>
+	</div>
 	<div class="container">
 		<div class="d-flex justify-content-center h-100">
 			<div class="card">

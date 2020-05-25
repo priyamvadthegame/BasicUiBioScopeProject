@@ -15,6 +15,7 @@ import {CompleteBackDropImageUrl} from './pipes/imageUrlBackDropPath'
 import {MovieDescription }  from './pipes/moveDescriptionPipe'
 import { BioScopeWatchMovieComponent} from './component/watchMoviesComponent/watchmoviescomponent'
 import {Data} from './providers/movieData'
+import {DemoMaterialModule} from './material-module';
 @NgModule({
   declarations: [
     AppComponent,BioScopeLogInComponent,BioScopeRegisterComponent,BioScopeMainPageComponent,CompleteImageUrl,MovieDescription,BioScopeWatchMovieComponent
@@ -23,7 +24,7 @@ import {Data} from './providers/movieData'
     BrowserModule,
     AppRoutingModule,
     FormsModule,ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,DemoMaterialModule
   ],
   providers: [ProductService,Data],
   bootstrap: [AppComponent]

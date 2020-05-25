@@ -1,4 +1,4 @@
-import { Component,ViewEncapsulation} from '@angular/core';
+import { Component,ViewEncapsulation, OnInit} from '@angular/core';
 import {ProductService} from '../../services/bioscope.services'
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -7,9 +7,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class BioScopeLogInComponent {
+export class BioScopeLogInComponent implements OnInit {
  
   public userProfileForm:FormGroup;
+  public spinner=false;
   constructor(private userService: ProductService,private router:Router)
   {
       this.createForm()
@@ -24,12 +25,18 @@ export class BioScopeLogInComponent {
 }
   login()
   { 
+    this.spinner=true;
     let username=String(this.userProfileForm.get("email").value)
     let password=String(this.userProfileForm.get("password").value)
     console.log(username)
     this.userService.userLogin({"email":username,"password":password}).subscribe(response=>{console.log(response)
-    sessionStorage.setItem("sessionId",JSON.parse(JSON.stringify(response)).token)
+    localStorage.setItem("sessionId",JSON.parse(JSON.stringify(response)).token)
+    this.spinner=false;
     this.router.navigateByUrl("/mainpage");
   })
+  }
+  ngOnInit()
+  {
+    this.spinner=false
   }
 }

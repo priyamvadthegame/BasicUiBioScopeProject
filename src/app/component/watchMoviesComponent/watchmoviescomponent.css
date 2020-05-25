@@ -44,11 +44,16 @@
   width:150px;
  }
 
-
+ .recommendation img{
+  height:150px;
+  width:150px;
+ }
  .info-widget {
   width: 31.75%;
   display: inline-block;
 }
+
+
 
 .middle {
   float: left;

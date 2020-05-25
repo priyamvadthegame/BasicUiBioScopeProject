@@ -35,7 +35,7 @@ export class BioScopeWatchMovieComponent implements OnInit{
     ngOnInit()
     {
 
-      if(sessionStorage.length==0||sessionStorage.getItem("sessionId")=="")
+      if(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")==="")
         {
           this.route.navigateByUrl("/loginpage")
         }
