@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import {ProductService} from '../../services/bioscope.services'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Data} from '../../providers/movieData'
+import { NotifierService } from "angular-notifier";
 @Component({
   selector: 'watchmovie',
   templateUrl: './watchmoviescomponent.html',
@@ -15,8 +16,11 @@ export class BioScopeWatchMovieComponent implements OnInit{
   public recommendedArray;
   @ViewChild('ActorContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
   @ViewChild('RecommendationContent', { read: ElementRef }) public reccmContent: ElementRef<any>;
-  constructor(private formBuilder: FormBuilder, private movieService: ProductService,private router:ActivatedRoute,private route:Router,private data:Data)
+  constructor(private formBuilder: FormBuilder, private movieService: ProductService,private router:ActivatedRoute,private route:Router,private data:Data,private notifier:NotifierService)
     {
+      this.route.routeReuseStrategy.shouldReuseRoute = function() {
+        return false;
+    };
     }
     public scrollRight(): void {
       this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });

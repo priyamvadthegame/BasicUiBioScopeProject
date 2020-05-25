@@ -1,6 +1,7 @@
 import { Component,ViewEncapsulation} from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {ProductService} from '../../services/bioscope.services'
+import { NotifierService } from "angular-notifier";
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
@@ -8,7 +9,7 @@ import {ProductService} from '../../services/bioscope.services'
 })
 export class BioScopeRegisterComponent {
   public userProfileForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private userService: ProductService)
+  constructor(private formBuilder: FormBuilder, private userService: ProductService,private notifier:NotifierService)
     {
         this.createForm()
     }

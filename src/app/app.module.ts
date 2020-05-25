@@ -16,6 +16,8 @@ import {MovieDescription }  from './pipes/moveDescriptionPipe'
 import { BioScopeWatchMovieComponent} from './component/watchMoviesComponent/watchmoviescomponent'
 import {Data} from './providers/movieData'
 import {DemoMaterialModule} from './material-module';
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import { NotifierModule } from "angular-notifier";
 @NgModule({
   declarations: [
     AppComponent,BioScopeLogInComponent,BioScopeRegisterComponent,BioScopeMainPageComponent,CompleteImageUrl,MovieDescription,BioScopeWatchMovieComponent
@@ -24,7 +26,22 @@ import {DemoMaterialModule} from './material-module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,ReactiveFormsModule,
-    HttpClientModule,DemoMaterialModule
+    HttpClientModule,DemoMaterialModule,
+    Ng2PageScrollModule,
+    NotifierModule.withConfig({
+      position: {
+ 
+        horizontal: {
+          position: 'right',
+        distance: 12
+      },
+       vertical: {
+             position: 'top',
+             distance: 12
+            }
+       
+      }
+    })
   ],
   providers: [ProductService,Data],
   bootstrap: [AppComponent]

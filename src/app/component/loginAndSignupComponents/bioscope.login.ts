@@ -2,6 +2,7 @@ import { Component,ViewEncapsulation, OnInit} from '@angular/core';
 import {ProductService} from '../../services/bioscope.services'
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { NotifierService } from "angular-notifier";
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ export class BioScopeLogInComponent implements OnInit {
  
   public userProfileForm:FormGroup;
   public spinner=false;
-  constructor(private userService: ProductService,private router:Router)
+  constructor(private userService: ProductService,private router:Router,private notifier:NotifierService)
   {
       this.createForm()
   }
@@ -33,7 +34,10 @@ export class BioScopeLogInComponent implements OnInit {
     localStorage.setItem("sessionId",JSON.parse(JSON.stringify(response)).token)
     this.spinner=false;
     this.router.navigateByUrl("/mainpage");
-  })
+    
+  },
+  error=>{console.log(error);
+   this.spinner=false})
   }
   ngOnInit()
   {

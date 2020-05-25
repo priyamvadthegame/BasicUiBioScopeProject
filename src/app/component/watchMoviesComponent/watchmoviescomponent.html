@@ -7,17 +7,17 @@
             <p>
               {{this.movieObject.description}}
             </p>
-            <a  type="button" class="btn btn-dark btn-lg download-button" href="./#videocontainer"><i class="fa fa-google-play fa-1x"></i>Watch Now</a>
+            <a  type="button" class="btn btn-dark btn-lg download-button" pageScroll href="#videocontainer"><i class="fa fa-google-play fa-1x"></i>Watch Now</a>
             <a type="button" [href]="movieObject.url" class="btn btn-outline-light btn-lg download-button" [download]="movieObject.title"><i class="fa fa-arrow-alt-circle-down fa-1x"></i> Download</a>
             <br/>
           </div>
         </div>
-        <div class="container-fluid" id="videocontainer">
+        <div class="container" #videocontainer id="videocontainer">
           <div class="row">
             <div class="col-md-12">
           <div class="viseoplayer">
-              <video id="my_video_1" class="video-js vjs-default-skin" width="640px" height="267px" controls preload="none"
-                data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+              <video id="my_video_1" class="video-js vjs-default-skin embed-responsive" width="1200px" height="px" controls preload="none"
+                data-setup='{ "aspectRatio":"800:267", "playbackRates": [1, 1.5, 2] }'>
                 <source [src]="movieObject.url" type='video/mp4' />
                 <source [src]="movieObject.url" type='video/webm' />
               </video>
@@ -25,34 +25,7 @@
           </div>
         </div>
       </div>
-      <br><br>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-              <h3 class="text-white">Cast & Crews</h3>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-sm-12">
-            <div class="actors">
-              <div style="float: left">
-                <button class="lrbutton text-white embed-responsive" (click)="scrollLeft()">&#8592;</button>
-                </div>
-              <div #ActorContent class="middle" >
-                <div class="info-widget" *ngFor="let actor of actorArray">
-                  <div *ngIf="(actor.actor_poster)!=null">
-                        <img class="text-white embed-responsive"  [src]="actor.actor_poster|imageurlwr" [alt]="actor.actor"/>
-                    </div>
-                </div>
-            </div>
-            <div style="float: right">
-                <button class="lrbutton text-white embed-responsive" (click)="scrollRight()">&#8594;</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br><br><br><br>
+      <br><br><br><br><br>
       <div class="container" *ngIf="recommendedArray!=undefined&&recommendedArray.length>0">
         <div class="row">
           <div class="col-md-12">
@@ -66,7 +39,7 @@
                 <button class="lrbutton text-white embed-responsive" (click)="RecmmscrollLeft()">&#8592;</button>
                 </div>
               <div #RecommendationContent class="middle">
-                <div class="info-widget" *ngFor="let recm of recommendedArray">
+                <div class="info-widget embed-responsive" *ngFor="let recm of recommendedArray">
                   <img class="text-white embed-responsive" [src]="recm.movie_poster_data" [alt]="recm.recommended_movie"/>
                 </div>
               </div>
@@ -77,6 +50,35 @@
           </div>
         </div>
       </div>
+      <br><br><br><br>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+              <h3 class="text-white">Cast & Crews</h3>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="actors">
+              <div style="float: left">
+                <button class="lrbutton text-white embed-responsive" (click)="scrollLeft()">&#8592;</button>
+                </div>
+              <div #ActorContent class="middle" >
+                <div class="info-widget embed-responsive" *ngFor="let actor of actorArray">
+                  <div *ngIf="(actor.actor_poster)!=null">
+                        <img class="text-white embed-responsive"  [src]="actor.actor_poster|imageurlwr" [alt]="actor.actor"/>
+                    </div>
+                </div>
+            </div>
+            <div style="float: right">
+                <button class="lrbutton text-white embed-responsive" (click)="scrollRight()">&#8594;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+      
     </div>
   </div>
 

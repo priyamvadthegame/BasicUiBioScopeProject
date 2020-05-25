@@ -61,7 +61,7 @@
           <div class="card">
 
             <!-- Card image -->
-            <div  class="view overlay" (mouseenter) ="movies.hover=false"  (mouseleave) ="movies.hover=true">
+            <div  class="view overlay" (mouseenter) ="mouseEnter(movies)"  (mouseleave) ="mouseLeave(movies)">
               <div>
                 <div *ngIf="movies.hover"   class="movie-poster">
                     <img  class="card-img-top" [alt]="movies.title" src="{{movies.posters|imageurl}}"

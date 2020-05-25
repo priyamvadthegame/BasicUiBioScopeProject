@@ -4,6 +4,7 @@ import {ProductService} from '../../services/bioscope.services'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Data} from '../../providers/movieData'
 import { DomSanitizer } from '@angular/platform-browser';
+import { NotifierService } from "angular-notifier";
 @Component({
   selector: 'mainpage',
   templateUrl: './bioscope.mainpage.component.html',
@@ -13,10 +14,9 @@ export class BioScopeMainPageComponent implements OnInit{
   public userProfileForm: FormGroup;
   public movieList:Object=[];
   public topThreeMovieList:Array<any>=[]
-  public onNotHovered=true
-  public onHovered=false
+  public timeOut;
   public spinner=false;
-  constructor(private formBuilder: FormBuilder, private movieService: ProductService,private route:Router,private data:Data,private sanitizer:DomSanitizer)
+  constructor(private formBuilder: FormBuilder, private movieService: ProductService,private route:Router,private data:Data,private sanitizer:DomSanitizer,private notifier:NotifierService)
     {
         
     }
@@ -47,15 +47,16 @@ export class BioScopeMainPageComponent implements OnInit{
       localStorage.setItem("movieObj",JSON.stringify(movie))
       this.route.navigate(['/watch'])
     }
-    mouseEnter()
+    mouseEnter(movies)
     {
-      this.onHovered=true;
-      this.onNotHovered=false;
+       this.timeOut= setTimeout (() => {
+                 movies.hover=false
+              },600);
     }
-    mouseLeave()
+    mouseLeave(movies)
     {
-        this.onHovered=false;
-        this.onNotHovered=true;
+        movies.hover=true;
+        clearTimeout(this.timeOut)
     }
 
     ngOnInit()
