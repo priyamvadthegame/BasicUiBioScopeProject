@@ -14,7 +14,9 @@ export class BioScopeWatchMovieComponent implements OnInit{
   public movieposterthumb:string;
   public movieposter;
   public actorArray;
+  public genereString:String="";
   public recommendedArray;
+  public tmdbRating;
   @ViewChild('ActorContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
   @ViewChild('RecommendationContent', { read: ElementRef }) public reccmContent: ElementRef<any>;
   constructor(private formBuilder: FormBuilder, private movieService: ProductService,private router:ActivatedRoute,private route:Router,private data:Data,private notifier:NotifierService)
@@ -74,6 +76,26 @@ export class BioScopeWatchMovieComponent implements OnInit{
           return true
           }
           })
+          
+        if(this.movieObject.hasOwnProperty("genres_array"))
+        {
+          let genereArray=this.movieObject.genres_array;
+          if(genereArray.length>0)
+          {
+            for(let i=0;i<genereArray.length;i++)
+            {   if(i<genereArray.length-1)
+                {
+                  this.genereString+=String(genereArray[i].genre)+","
+                }
+                else{
+                  this.genereString+=String(genereArray[i].genre);
+                }
+              }
+          }
+         
+        }
+        this.tmdbRating=this.movieObject.rating;
+       
         console.log(this.movieposter)
         }
       }

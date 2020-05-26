@@ -3,7 +3,15 @@
       'background-size': 'cover', 'background-position': 'center'}">
       <div class="banner" >
           <div class="content">
-            <h2>{{this.movieObject.title}}</h2>
+            <div class="row ml-1">
+              <h2>{{this.movieObject.title}}</h2>
+              <div class="rating-div ml-2"> 
+                  <img  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg">
+                  <p class="mx-2 my-0">{{tmdbRating}}</p>
+              </div>
+            </div>
+            
+            <h6 *ngIf="genereString!=&#34;&#34;">{{this.genereString}}</h6>
             <p>
               {{this.movieObject.description}}
             </p>

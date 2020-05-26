@@ -19,6 +19,14 @@
     letter-spacing: 0.2em;
     color: #fff;
   }
+  .banner .content h6{
+    font-size: 1.1em;
+    font-weight:100;
+    letter-spacing: 0.03em;
+    color: #fff;
+    line-height: 1.5em;
+    margin: 15px 0 35px;
+  }
   
   .banner .content p{
     font-size: 1.1em;
@@ -74,3 +82,10 @@
   background-color: rgba(0,0.5,0.5,0.1)
 }
 
+.rating-div
+{
+  background-color: black;
+  border: 2px solid thistle;
+  height:50px;
+  width: 55px;
+}
