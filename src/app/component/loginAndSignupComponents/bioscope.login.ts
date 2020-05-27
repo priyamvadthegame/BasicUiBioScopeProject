@@ -46,5 +46,10 @@ export class BioScopeLogInComponent implements OnInit {
   ngOnInit()
   {
     this.spinner=false
+    if(!(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")===""))
+    {
+          this.router.navigateByUrl("/mainpage");
+    }
+    
   }
 }

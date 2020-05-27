@@ -10,6 +10,7 @@ import { NotifierService } from "angular-notifier";
   styleUrls: ['./watchmoviescomponent.css'],
 })
 export class BioScopeWatchMovieComponent implements OnInit{
+  @ViewChild('videoPlayer') videoplayer: ElementRef;
   public movieObject;
   public movieposterthumb:string;
   public movieposter;
@@ -17,6 +18,8 @@ export class BioScopeWatchMovieComponent implements OnInit{
   public genereString:String="";
   public recommendedArray;
   public tmdbRating;
+  public user;
+  public playVideo=false
   @ViewChild('ActorContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
   @ViewChild('RecommendationContent', { read: ElementRef }) public reccmContent: ElementRef<any>;
   constructor(private formBuilder: FormBuilder, private movieService: ProductService,private router:ActivatedRoute,private route:Router,private data:Data,private notifier:NotifierService)
@@ -39,15 +42,66 @@ export class BioScopeWatchMovieComponent implements OnInit{
     public RecmmscrollLeft(): void {
       this.reccmContent.nativeElement.scrollTo({ left: (this.reccmContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
     }
+    public onPlayVideo()
+    {     
+       
+        if(this.playVideo===false)
+        { 
+          console.log("tr")
+          this.movieService.getUserInfo(localStorage.getItem("sessionId")).subscribe(response=>{this.user=response;this.addMovieToUserWachList();})
+        }
+        this.playVideo=true
+        
+    }
+    public addMovieToUserWachList()
+    {   
+        
+        let movie_id=this.movieObject._id;
+        let movie_poster;
+        if(this.movieObject.posters.length>0)
+        {
+          movie_poster=(this.movieObject.posters[0]).posterPath;
+        }
+        else
+        {
+          movie_poster="null"
+        }
+        let alreadyAddedMovies=this.user.movieArray;
+        let movieObjToBeAdded={
+            "movieName":String(this.movieObject.title),
+            "movie_id": String(movie_id),
+            "movie_poster": String(movie_poster)
+        }
+        if(alreadyAddedMovies.length>0)
+        { 
+          let flag=0;
+          for(let i=0;i<alreadyAddedMovies.length;i++)
+          {
+            if(alreadyAddedMovies[i].movie_id==movie_id)
+            {
+              flag=1;
+              break;
+            }
+          }
+          if(flag==0)
+          {
+            this.movieService.setWatchedMovieOfAUser(localStorage.getItem("sessionId"),movieObjToBeAdded).subscribe((response)=>console.log(response))
+          }
+        }
+        else{
+          this.movieService.setWatchedMovieOfAUser(localStorage.getItem("sessionId"),movieObjToBeAdded).subscribe((response)=>console.log(response))
+        }
+    }
     ngOnInit()
-    {
-
+    { 
+      this.playVideo=false
       if(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")==="")
         {
           this.route.navigateByUrl("/loginpage")
         }
       else
       {
+        
         this.movieObject=JSON.parse(localStorage.getItem("movieObj"));
         console.log(this.movieObject)
         let backdrops=this.movieObject.backdrops
@@ -95,8 +149,7 @@ export class BioScopeWatchMovieComponent implements OnInit{
          
         }
         this.tmdbRating=this.movieObject.rating;
-       
         console.log(this.movieposter)
-        }
       }
+    }
 }

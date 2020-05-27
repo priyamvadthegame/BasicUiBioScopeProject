@@ -1,34 +1,49 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component,ViewEncapsulation, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ProductService } from '../../services/bioscope.services';
 import { NotifierService } from "angular-notifier";
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { error } from 'protractor';
 
 @Component({
     selector: 'user-profile',
-    templateUrl: './app.profile.html'
+    templateUrl: './app.profile.html',
+    styleUrls: ['./app.profile.css']
 })
 
 export class UserProfleComponent implements OnInit{
+    @ViewChild('RecommendationContent', { read: ElementRef }) public reccmContent: ElementRef<any>;
     public userProfileForm: FormGroup;
     public user;
+    public moviesArray;
     username:string;
     email:string;
-    constructor (private formBuilder: FormBuilder, private userService: ProductService,private notify:NotifierService){
-        this.createForm();
+    public spinner =false;
+    constructor (private formBuilder: FormBuilder, private userService: ProductService,private notify:NotifierService,private route:Router){
  
     }
-    createForm(){
-        this.userProfileForm=this.formBuilder.group({
-            username: [null,[Validators.required,Validators.minLength]],
-            email: [null,[Validators.required,Validators.minLength]],      
-        });
-    }
-    onSubmit() {
-
-        this.notify.notify("success","User Profile Updated Succesfully");
+    public RecmmscrollRight(): void {
+        this.reccmContent.nativeElement.scrollTo({ left: (this.reccmContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+      }
+    
+      public RecmmscrollLeft(): void {
+        this.reccmContent.nativeElement.scrollTo({ left: (this.reccmContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
+      }
+    onImageClick(movieId) {
+      this.spinner=true;
+      console.log(movieId)
+      this.userService.getMoviesById(localStorage.getItem("sessionId"),String(movieId)).subscribe(response=>{ console.log(response); localStorage.setItem("movieObj",JSON.stringify(response));this.route.navigate(['/watch'])},error=>this.spinner=false)
     }
     ngOnInit(){
+        this.spinner=false;
+        if(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")==="")
+        {
+          this.route.navigateByUrl("/loginpage")
+        }
+        else
+        {    this.spinner=true;
+            this.userService.getUserInfo(localStorage.getItem("sessionId")).subscribe(response=>{console.log(response);this.user=response;this.moviesArray=this.user.movieArray;this.spinner=false},(error)=>this.spinner=false)
+        }
       
     }
     changePassword(){

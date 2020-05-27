@@ -1,100 +1,86 @@
-<head>
-  <title>User Profile</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<div class="container bootstrap snippet" >
-    <div class="row">
-          <div class="col-sm-10"><h1>User Profile</h1></div>
-        <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="../../../assets/images/single-pizza-pic.png"></a></div>
+<div class="progress-spinner" *ngIf="spinner">
+    <mat-progress-spinner
+      color="accent"
+          mode="indeterminate">
+      </mat-progress-spinner>
+  </div>
+<div class="main-div"  *ngIf="!spinner">
+    <div class="container-fluid emp-profile embed-responsive">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="https://media-exp1.licdn.com/dms/image/C5603AQGx0d_exohuSA/profile-displayphoto-shrink_200_200/0?e=1596067200&v=beta&t=ycM0nxyBmO30rrkrjVdPT0-rfJFWI1JgWRw5Icg19tk" alt=""/>
+                    <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="file"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-6">
+                <div class="profile-head">
+                            <h5 class="text-white">
+                                {{user.name}}
+                            </h5>
+                            <h6>
+                                Action,Adventure,Comedy
+                            </h6>
+                            <p  class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Watched Movies</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-6">
+                <input type="submit" class="profile-edit-btn embed-responsive" name="btnAddMore" value="Edit Profile"/>
+            </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab embed-responsive" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6 col-6">
+                                        <label class="text-white">User Name</label>
+                                    </div>
+                                    <div class="col-md-6 col-6">
+                                        <p class="text-white">{{user.name}}</p>
+                                    </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-6">
+                                        <label class="text-white">Email</label>
+                                    </div>
+                                    <div class="col-md-6 col-6">
+                                        <p>{{user.email}}</p>
+                                    </div>
+                        </div>
+                    </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <div class="recommendation">
+                                    <div hidden style="float: left">
+                                      <button class="lrbutton text-white embed-responsive" (click)="RecmmscrollLeft()">&#8592;</button>
+                                      </div>
+                                    <div #RecommendationContent class="middle">
+                                      <div class="info-widget embed-responsive " *ngFor="let movies of moviesArray">
+                                        <img (click)="onImageClick(movies.movie_id)" class="text-white embed-responsive" [title]="movies.movieName" [src]="movies.movie_poster|imageurlwr" [alt]=""/>
+                                      </div>
+                                    </div>
+                                    <div style="float: right;margin-right: 25%">
+                                      <button hidden class="lrbutton text-white embed-responsive" (click)="RecmmscrollRight()">&#8594;</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                </div>
+            </div>
+    </form>           
     </div>
-    <div class="row">
-          <div class="col-sm-3"><!--left col-->
-              
-
-      <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block file-upload">
-      </div><br>          
-               
-          <div class="panel panel-default">
-          </div>
-          
-        </div><!--/col-3-->
-        <div class="col-sm-9">
-           
-
-              
-          <div class="tab-content">
-            <div class="tab-pane active" id="home">
-              
-                  <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()" (ngChange)="onChanges()" class="form" action="##" method="post">
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="username"><h4>Username</h4></label>
-                              <input type="text" class="form-control" formControlName="username" [(ngModel)]="username" minlength="3" id="username" placeholder="username" title="enter your User Name">
-                          </div>
-                          <div *ngIf="userProfileForm.controls['username'].invalid && (userProfileForm.controls['username'].dirty || userProfileForm.controls['username'].touched)" class="alert alert-danger">
-                            <div *ngIf="userProfileForm.controls['username'].hasError('required')">
-                              Username is required.
-                            </div>
-                            <div *ngIf="userProfileForm.controls['username'].hasError('minlength')">
-                              Username is less than 3 characters.
-                            </div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="email"><h4>Last name</h4></label>
-                              <input disabled type="text" class="form-control" formControlName="email" [(ngModel)]="email" minlength="3" id="email" placeholder="last name" title="enter your last name">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                                  <button class="btn btn-lg btn-success" ><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                   <br><br>
-                            </div>
-                      </div>
-                      <div class="form-group">
-                          
-                        <div class="col-xs-6">
-                            <label for="password"><h4>Old Password</h4></label>
-                            <input type="password" class="form-control" formControlName="password" [(ngModel)]="password" id="password" placeholder="password" title="enter your password.">
-                        </div>
-                        <div *ngIf="userProfileForm.controls['password'].invalid && (userProfileForm.controls['password'].dirty || userProfileForm.controls['password'].touched)" class="alert alert-danger">
-                            <div *ngIf="userProfileForm.controls['password'].hasError('required')">
-                            Please enter the password.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        
-                        <div class="col-xs-6">
-                          <label for="password2"><h4>New Password</h4></label>
-                            <input type="password" class="form-control" formControlName="password2" [(ngModel)]="password2" id="password2" placeholder="New password" title="enter your password2.">
-                        </div>
-                    </div>
-                    <div *ngIf="userProfileForm.controls['password2'].invalid && (userProfileForm.controls['password2'].dirty || userProfileForm.controls['password2'].touched)" class="alert alert-danger">
-                        <div *ngIf="userProfileForm.controls['password2'].hasError('required')">
-                         New Password is required
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-xs-12">
-                           <br>
-                             <button class="btn btn-lg btn-success" (click)="changePassword()" ><i class="glyphicon glyphicon-ok-sign"></i> change Password</button>
-                              <br><br>
-                       </div>
-                 </div>
-                  </form>
-              
-             </div><!--/tab-pane-->
-             
-          </div><!--/tab-content-->
-
-        </div><!--/col-9-->
-    </div><!--/row-->
+</div>

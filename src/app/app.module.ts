@@ -18,10 +18,11 @@ import {Data} from './providers/movieData'
 import {DemoMaterialModule} from './material-module';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import { NotifierModule } from "angular-notifier";
+import {UserProfleComponent} from "./component/profile component/app.profile"
 @NgModule({
   declarations: [
     AppComponent,BioScopeLogInComponent,BioScopeRegisterComponent,BioScopeMainPageComponent,CompleteImageUrl,MovieDescription,BioScopeWatchMovieComponent
-    ,CompleteTrailerUrl,CompleteBackDropImageUrl,CompleteImageUrlWr],
+    ,CompleteTrailerUrl,CompleteBackDropImageUrl,CompleteImageUrlWr,UserProfleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

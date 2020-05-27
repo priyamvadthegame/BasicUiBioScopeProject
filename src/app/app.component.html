@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark ">
+<nav *ngIf="checkLogeedInUser()" class="navbar navbar-expand-lg navbar-dark ">
     <a routerLink="/mainpage" class="navbar-brand">scope</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
       <a class="nav-link" href="#">FAVORITES</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">RECENT</a>
+      <a class="nav-link" (click)="logout()">LOGOUT</a>
     </li>
   </ul>
   <form class="form-inline my-2 my-lg-0"action="/" method="post" >
@@ -25,7 +25,7 @@
   </form>
 
   </div>
-  <button class="profile"><p class="fa fa-user-circle fa-2x"></p></button>
+  <button routerLink="/user-profile" class="profile"><p class="fa fa-user-circle fa-2x"></p></button>
   </nav>
   
 <router-outlet></router-outlet>

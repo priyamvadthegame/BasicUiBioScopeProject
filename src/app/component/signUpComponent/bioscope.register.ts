@@ -1,4 +1,4 @@
-import { Component,ViewEncapsulation} from '@angular/core';
+import { Component,ViewEncapsulation, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {ProductService} from '../../services/bioscope.services'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -8,7 +8,7 @@ import { NotifierService } from "angular-notifier";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class BioScopeRegisterComponent {
+export class BioScopeRegisterComponent implements OnInit {
   public userProfileForm: FormGroup;
   public spinner=false
   constructor(private formBuilder: FormBuilder, private userService: ProductService,private notifier:NotifierService,private router:Router)
@@ -41,5 +41,12 @@ export class BioScopeRegisterComponent {
     console.log(error)
     this.notifier.notify("error","Email Already Exists");
    this.spinner=false})
+  }
+  ngOnInit()
+  {
+    if(!(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")===""))
+    {
+          this.router.navigateByUrl("/mainpage");
+    }
   }
 }

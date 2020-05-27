@@ -5,6 +5,7 @@ import {BioScopeLogInComponent} from './component/loginAndSignupComponents/biosc
 import {BioScopeRegisterComponent} from './component/signUpComponent/bioscope.register'
 import {BioScopeMainPageComponent}  from './component/mainPageComponents/bioscope.mainpage.component'
 import { BioScopeWatchMovieComponent} from './component/watchMoviesComponent/watchmoviescomponent'
+import {UserProfleComponent} from "./component/profile component/app.profile"
 const routes: Routes = [{
   path: '',
   redirectTo:'mainpage',
@@ -26,6 +27,10 @@ const routes: Routes = [{
 {
   path:'watch',
   component:BioScopeWatchMovieComponent
+},
+{
+  path:'user-profile',
+  component:UserProfleComponent
 }];
 
 

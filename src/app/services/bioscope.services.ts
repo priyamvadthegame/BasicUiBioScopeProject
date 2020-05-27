@@ -33,4 +33,12 @@ export class ProductService{
    {
       return this._httpClient.get('https://raha-bioscope-app.herokuapp.com/user/me',{headers:this.httpHeaders.set('Authorization',authorizationKey)})
    }
+   setWatchedMovieOfAUser(authorizationKey:string,movieObj:Object)
+   {
+    return this._httpClient.post('https://raha-bioscope-app.herokuapp.com/user/watchnow',JSON.stringify(movieObj),{headers:this.httpHeaders.set('Authorization',authorizationKey)})
+   }
+   getMoviesById(authorizationKey:string,movieKey:string)
+   {
+      return this._httpClient.get(`https://raha-bioscope-app.herokuapp.com/movie/id`,{headers:this.httpHeaders.set('Authorization',authorizationKey),params:{"id":movieKey}})
+   }
 }
