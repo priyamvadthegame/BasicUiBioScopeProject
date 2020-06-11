@@ -69,7 +69,7 @@ export class BioScopeMainPageComponent implements OnInit{
     {
       this.spinner=false  
       if(localStorage.getItem("authId")===null||localStorage.getItem("authId")==="")
-      {
+      {     
             this.route.navigateByUrl("/loginpage")
       }
         else

@@ -51,7 +51,14 @@ export class CategoryWiseMovies implements OnInit{
     
 
     ngOnInit()
-    {   
+    {     if(localStorage.getItem("authId")===null||localStorage.getItem("authId")==="")
+          {     
+                this.route.navigateByUrl("/loginpage")
+          }
+          else
+          {
+
+          
               this.spinner=true;
               this.movieservice.getMovesByCategory(localStorage.getItem("authId"),5,"superhero").subscribe(response=>{
                 this.superheroCategory=response;  
@@ -90,4 +97,5 @@ export class CategoryWiseMovies implements OnInit{
           
       })
     }
+  }
 }
