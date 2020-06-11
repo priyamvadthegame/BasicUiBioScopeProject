@@ -40,12 +40,12 @@ export class BioScopeMainPageComponent implements OnInit{
     getAllMovieList(category:string)
     {   
       this.spinner=true;  
-      this.movieService.getMovesByCategory(localStorage.getItem("sessionId"),1000,category).subscribe(response=>{console.log(response); this.movieList=response;  this.getFirstThreeMovieList();this.spinner=false})
+      this.movieService.getMovesByCategory(localStorage.getItem("authId"),1000,category).subscribe(response=>{console.log(response); this.movieList=response;  this.getFirstThreeMovieList();this.spinner=false})
     }
     getAllMovieListByIndustry(industry:string)
     {
       this.spinner=true;
-      this.movieService.getMovieByIndustry(localStorage.getItem("sessionId"),1000,industry).subscribe(response=>{console.log(response); this.movieList=response;  this.getFirstThreeMovieList();this.spinner=false})
+      this.movieService.getMovieByIndustry(localStorage.getItem("authId"),1000,industry).subscribe(response=>{console.log(response); this.movieList=response;  this.getFirstThreeMovieList();this.spinner=false})
     }
 
     watchMovieButtonClickEvent(movie:Object)
@@ -68,7 +68,7 @@ export class BioScopeMainPageComponent implements OnInit{
     ngOnInit()
     {
       this.spinner=false  
-      if(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")==="")
+      if(localStorage.getItem("authId")===null||localStorage.getItem("authId")==="")
       {
             this.route.navigateByUrl("/loginpage")
       }

@@ -49,7 +49,7 @@ export class BioScopeRegisterComponent implements OnInit {
   }
   ngOnInit()
   {
-    if(!(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")===""))
+    if(!(localStorage.getItem("authId")===null||localStorage.getItem("authId")===""))
     {
           this.router.navigateByUrl("/mainpage");
     }
@@ -84,7 +84,7 @@ export class DialogContentExampleDialog implements OnInit{
                 this.happening="verifying..."
               this.userService.userRegister(JSON.parse(localStorage.getItem("userTempObj"))).
                   subscribe(response=>{console.log(response);
-                  localStorage.setItem("sessionId",JSON.parse(JSON.stringify(response)).token)
+                  localStorage.setItem("authId",JSON.parse(JSON.stringify(response)).token)
                   localStorage.removeItem("userTempObj")
                   this.otpService.clearToken();
                   this.spinner=false;

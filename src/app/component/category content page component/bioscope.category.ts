@@ -53,37 +53,37 @@ export class CategoryWiseMovies implements OnInit{
     ngOnInit()
     {   
               this.spinner=true;
-              this.movieservice.getMovesByCategory(localStorage.getItem("sessionId"),5,"superhero").subscribe(response=>{
+              this.movieservice.getMovesByCategory(localStorage.getItem("authId"),5,"superhero").subscribe(response=>{
                 this.superheroCategory=response;  
                 this.flagsuper=true;
                   this.checkAllDataCame();
                 
               })
-              this.movieservice.getMovesByCategory(localStorage.getItem("sessionId"),5,"horror").subscribe(response=>{
+              this.movieservice.getMovesByCategory(localStorage.getItem("authId"),5,"horror").subscribe(response=>{
                 this.horrorCategory=response;  
                 this.flagHorror=true;
                   this.checkAllDataCame();
                 
             })
-            this.movieservice.getMovesByCategory(localStorage.getItem("sessionId"),5,"action").subscribe(response=>{
+            this.movieservice.getMovesByCategory(localStorage.getItem("authId"),5,"action").subscribe(response=>{
               this.actionCategory=response;
               this.flagAction=true;
               this.checkAllDataCame();
             
           })
-            this.movieservice.getMovesByCategory(localStorage.getItem("sessionId"),5,"comedy").subscribe(response=>{
+            this.movieservice.getMovesByCategory(localStorage.getItem("authId"),5,"comedy").subscribe(response=>{
               this.comedyCategory=response;
               this.flagComedy=true;
               this.checkAllDataCame();
           
         })
-        this.movieservice.getMovesByCategory(localStorage.getItem("sessionId"),5,"crime").subscribe(response=>{
+        this.movieservice.getMovesByCategory(localStorage.getItem("authId"),5,"crime").subscribe(response=>{
           this.crimeCategory=response;
           this.flagCrime=true;
           this.checkAllDataCame();
           
       })
-        this.movieservice.getMovesByCategory(localStorage.getItem("sessionId"),5,"romance").subscribe(response=>{
+        this.movieservice.getMovesByCategory(localStorage.getItem("authId"),5,"romance").subscribe(response=>{
           this.romanceCategory=response;
           this.flagRomance=true;
           this.checkAllDataCame();

@@ -31,7 +31,7 @@ export class BioScopeLogInComponent implements OnInit {
     let password=String(this.userProfileForm.get("password").value)
     console.log(username)
     this.userService.userLogin({"email":username,"password":password}).subscribe(response=>{console.log(response)
-    localStorage.setItem("sessionId",JSON.parse(JSON.stringify(response)).token)
+    localStorage.setItem("authId",JSON.parse(JSON.stringify(response)).token)
     this.spinner=false;
     this.router.navigateByUrl("/mainpage");
     
@@ -46,7 +46,7 @@ export class BioScopeLogInComponent implements OnInit {
   ngOnInit()
   {
     this.spinner=false
-    if(!(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")===""))
+    if(!(localStorage.getItem("authId")===null||localStorage.getItem("authId")===""))
     {
           this.router.navigateByUrl("/mainpage");
     }

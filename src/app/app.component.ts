@@ -14,7 +14,7 @@ export class AppComponent {
   }
   checkLogeedInUser():Boolean
   {
-    if(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")==="")
+    if(localStorage.getItem("authId")===null||localStorage.getItem("authId")==="")
     {
           return false;
     }
@@ -25,8 +25,8 @@ export class AppComponent {
   }
   logout()
   {
-    this.userService.logout(localStorage.getItem("sessionId")).subscribe((response)=>console.log(response));
-    localStorage.removeItem("sessionId");
+    this.userService.logout(localStorage.getItem("authId")).subscribe((response)=>console.log(response));
+    localStorage.removeItem("authId");
     this.router.navigateByUrl("/loginpage");
   }
 }

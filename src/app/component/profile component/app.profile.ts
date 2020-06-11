@@ -32,17 +32,17 @@ export class UserProfleComponent implements OnInit{
     onImageClick(movieId) {
       this.spinner=true;
       console.log(movieId)
-      this.userService.getMoviesById(localStorage.getItem("sessionId"),String(movieId)).subscribe(response=>{ console.log(response); localStorage.setItem("movieObj",JSON.stringify(response));this.route.navigate(['/watch'])},error=>this.spinner=false)
+      this.userService.getMoviesById(localStorage.getItem("authId"),String(movieId)).subscribe(response=>{ console.log(response); localStorage.setItem("movieObj",JSON.stringify(response));this.route.navigate(['/watch'])},error=>this.spinner=false)
     }
     ngOnInit(){
         this.spinner=false;
-        if(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")==="")
+        if(localStorage.getItem("authId")===null||localStorage.getItem("authId")==="")
         {
           this.route.navigateByUrl("/loginpage")
         }
         else
         {    this.spinner=true;
-            this.userService.getUserInfo(localStorage.getItem("sessionId")).subscribe(response=>{console.log(response);this.user=response;this.moviesArray=this.user.movieArray;this.spinner=false},(error)=>this.spinner=false)
+            this.userService.getUserInfo(localStorage.getItem("authId")).subscribe(response=>{console.log(response);this.user=response;this.moviesArray=this.user.movieArray;this.spinner=false},(error)=>this.spinner=false)
         }
       
     }

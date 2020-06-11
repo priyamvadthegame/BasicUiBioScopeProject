@@ -47,7 +47,7 @@ export class BioScopeWatchMovieComponent implements OnInit{
         if(this.playVideo===false)
         { 
           console.log("tr")
-          this.movieService.getUserInfo(localStorage.getItem("sessionId")).subscribe(response=>{this.user=response;this.addMovieToUserWachList();})
+          this.movieService.getUserInfo(localStorage.getItem("authId")).subscribe(response=>{this.user=response;this.addMovieToUserWachList();})
         }
         this.playVideo=true
         
@@ -84,17 +84,17 @@ export class BioScopeWatchMovieComponent implements OnInit{
           }
           if(flag==0)
           {
-            this.movieService.setWatchedMovieOfAUser(localStorage.getItem("sessionId"),movieObjToBeAdded).subscribe((response)=>console.log(response))
+            this.movieService.setWatchedMovieOfAUser(localStorage.getItem("authId"),movieObjToBeAdded).subscribe((response)=>console.log(response))
           }
         }
         else{
-          this.movieService.setWatchedMovieOfAUser(localStorage.getItem("sessionId"),movieObjToBeAdded).subscribe((response)=>console.log(response))
+          this.movieService.setWatchedMovieOfAUser(localStorage.getItem("authId"),movieObjToBeAdded).subscribe((response)=>console.log(response))
         }
     }
     ngOnInit()
     { 
       this.playVideo=false
-      if(localStorage.getItem("sessionId")===null||localStorage.getItem("sessionId")==="")
+      if(localStorage.getItem("authId")===null||localStorage.getItem("authId")==="")
         {
           this.route.navigateByUrl("/loginpage")
         }
