@@ -1,5 +1,5 @@
 
-<nav *ngIf="checkLogeedInUser()" class="navbar navbar-expand-lg navbar-dark ">
+<nav *ngIf="checkLogeedInUser()" class="navbar navbar-expand-lg navbar-dark " style="padding: 0;height: 56px;padding-left: 10px;padding-right: 10px;">
     <a routerLink="/mainpage" class="navbar-brand">scope</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,21 +11,22 @@
       <a class="nav-link" routerLink="/mainpage">HOME <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">FAVORITES</a>
+      <a class="nav-link" [routerLink]="['/allcontents','hollywood']">Hollywood</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" (click)="logout()">LOGOUT</a>
+    <li class="nav-item" >
+      <a class="nav-link" [routerLink]="['/allcontents','bollywood']" style="cursor: pointer;">Bollywood</a>
     </li>
   </ul>
-  <form class="form-inline my-2 my-lg-0"action="/" method="post" >
-    <input type="text" class="form-control" placeholder="Search Movies">
-    <li class="fa fa-search" type="submit"></li>
+  
+    <li class="nav-item">
+      <a class="nav-link text-white" style="padding-bottom: 25px; cursor: pointer;" (click)="logout()">LOGOUT</a>
+    </li>
     <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search">
     < class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-  </form>
+
 
   </div>
-  <button routerLink="/user-profile" class="profile"><p class="fa fa-user-circle fa-2x"></p></button>
+  <button style="background-color: black;padding: 0;border: aliceblue;padding-top: 16px;height: -webkit-fill-available;" routerLink="/user-profile" class="profile"><p  class="fa fa-user-circle fa-2x text-white"></p></button>
   </nav>
   
 <router-outlet></router-outlet>

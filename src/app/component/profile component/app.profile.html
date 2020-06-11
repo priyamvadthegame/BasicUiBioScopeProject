@@ -64,7 +64,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                   <div class="recommendation">
-                                    <div hidden style="float: left">
+                                    <div  style="float: left">
                                       <button class="lrbutton text-white embed-responsive" (click)="RecmmscrollLeft()">&#8592;</button>
                                       </div>
                                     <div #RecommendationContent class="middle">
@@ -72,8 +72,8 @@
                                         <img (click)="onImageClick(movies.movie_id)" class="text-white embed-responsive" [title]="movies.movieName" [src]="movies.movie_poster|imageurlwr" [alt]=""/>
                                       </div>
                                     </div>
-                                    <div style="float: right;margin-right: 25%">
-                                      <button hidden class="lrbutton text-white embed-responsive" (click)="RecmmscrollRight()">&#8594;</button>
+                                    <div style="float: right;">
+                                      <button  class="lrbutton text-white embed-responsive" (click)="RecmmscrollRight()">&#8594;</button>
                                     </div>
                                   </div>
                                 </div>

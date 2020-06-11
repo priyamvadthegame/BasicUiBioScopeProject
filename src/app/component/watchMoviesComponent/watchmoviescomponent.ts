@@ -10,7 +10,6 @@ import { NotifierService } from "angular-notifier";
   styleUrls: ['./watchmoviescomponent.css'],
 })
 export class BioScopeWatchMovieComponent implements OnInit{
-  @ViewChild('videoPlayer') videoplayer: ElementRef;
   public movieObject;
   public movieposterthumb:string;
   public movieposter;
@@ -107,11 +106,8 @@ export class BioScopeWatchMovieComponent implements OnInit{
         let backdrops=this.movieObject.backdrops
         for(let i=0;i<backdrops.length;i++)
         {
-            if(backdrops[i].height>=String(window.outerHeight)&&backdrops[i].width>=String(window.outerWidth))
-            {
               this.movieposterthumb=`https://image.tmdb.org/t/p/original${backdrops[i].backdropPath}`
               break;
-            }
         }
         if(backdrops.length>0)
         {
@@ -126,7 +122,7 @@ export class BioScopeWatchMovieComponent implements OnInit{
           }
           })
         this.recommendedArray=this.movieObject.recommendation.filter((name)=> {
-          if(name.movie_poster_data != null&&name.hasOwnProperty('movie_poster_data')) {
+          if(name.movie_poster != null&&name.hasOwnProperty('movie_poster')) {
           return true
           }
           })

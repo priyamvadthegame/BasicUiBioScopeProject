@@ -6,7 +6,7 @@ import {Data} from '../../providers/movieData'
 import { DomSanitizer } from '@angular/platform-browser';
 import { NotifierService } from "angular-notifier";
 @Component({
-  selector: 'mainpage',
+  selector: 'allcontents',
   templateUrl: './bioscope.mainpage.component.html',
   styleUrls: ['./bioscope.mainpage.component.css'],
 })
@@ -16,7 +16,8 @@ export class BioScopeMainPageComponent implements OnInit{
   public topThreeMovieList:Array<any>=[]
   public timeOut;
   public spinner=false;
-  constructor(private formBuilder: FormBuilder, private movieService: ProductService,private route:Router,private data:Data,private sanitizer:DomSanitizer,private notifier:NotifierService)
+  public category:string;
+  constructor(private formBuilder: FormBuilder, private movieService: ProductService,private route:Router,private activated:ActivatedRoute,private data:Data,private sanitizer:DomSanitizer,private notifier:NotifierService)
     {
         
     }
@@ -36,10 +37,15 @@ export class BioScopeMainPageComponent implements OnInit{
       return this.sanitizer.bypassSecurityTrustResourceUrl(link)
     }
 
-    getAllMovieList()
+    getAllMovieList(category:string)
     {   
       this.spinner=true;  
-      this.movieService.getAllMovies(localStorage.getItem("sessionId")).subscribe(response=>{console.log(response); this.movieList=response;  this.getFirstThreeMovieList();this.spinner=false})
+      this.movieService.getMovesByCategory(localStorage.getItem("sessionId"),1000,category).subscribe(response=>{console.log(response); this.movieList=response;  this.getFirstThreeMovieList();this.spinner=false})
+    }
+    getAllMovieListByIndustry(industry:string)
+    {
+      this.spinner=true;
+      this.movieService.getMovieByIndustry(localStorage.getItem("sessionId"),1000,industry).subscribe(response=>{console.log(response); this.movieList=response;  this.getFirstThreeMovieList();this.spinner=false})
     }
 
     watchMovieButtonClickEvent(movie:Object)
@@ -67,8 +73,21 @@ export class BioScopeMainPageComponent implements OnInit{
             this.route.navigateByUrl("/loginpage")
       }
         else
-        {
-          this.getAllMovieList();
+        { 
+          this.activated.params.subscribe(params=>
+          {
+            this.category=params['category'];
+            if(this.category=='hollywood'||this.category=='bollywood')
+            {
+              this.getAllMovieListByIndustry(this.category)
+            }
+            else
+            {
+              this.getAllMovieList(this.category);
+            }
+          });
+            
+           
         }
        
     }

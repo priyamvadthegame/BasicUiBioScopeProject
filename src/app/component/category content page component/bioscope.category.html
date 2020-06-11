@@ -1,0 +1,203 @@
+<div class="progress-spinner" *ngIf="spinner">
+    <mat-progress-spinner
+      color="accent"
+          mode="indeterminate">
+      </mat-progress-spinner>
+  </div>
+
+<div class="main-div" *ngIf="!spinner">
+    <div class="container-fluid sub-main-div">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 ">
+                <h3  class="text-white">Marvel/DC</h3>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                
+                <h6  [routerLink]="['/allcontents','superhero']"  style="float:right; margin-right:  25%;color: #ed3f38;cursor: pointer;">View More&#8594;</h6>
+                
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                    <div class="superhero">
+                            <div style="float: left">
+                                <button hidden class="lrbutton text-white embed-responsive" (click)="scrollLeft()">&#8592;</button> 
+                            </div>
+                            <div #SuperHeroContent class="middle embed-responsive" >
+                                <div class="info-widget embed-responsive" *ngFor="let supmovies of superheroCategory;let i=index" >  
+                                       
+                                    <img (click)= "onImageClick(supmovies)" [src]="supmovies.posters|imageurlpo" [title]="supmovies.title" class=" poster-image  embed-responsive"/>
+                                    
+                                </div>
+                                
+                            </div>
+                        <div style="float: right; margin-right:5%">
+                            <button hidden class="lrbutton text-white embed-responsive" (click)="scrollRight()">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-white ">
+                <h3>Action/Thriller/Sci-fi</h3>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                
+                <h6   [routerLink]="['/allcontents','action']"  style="float:right; color: #ed3f38; margin-right: 25%;cursor: pointer;">View More&#8594;</h6>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                    <div class="action">
+                            <div style="float: left">
+                                <button hidden class="lrbutton text-white embed-responsive" (click)="scrollLeft()">&#8592;</button> 
+                            </div>
+                            <div #SuperHeroContent class="middle" >
+                                <div class="info-widget embed-responsive" *ngFor="let supmovies of actionCategory;let i=index" >  
+                                       
+                                    <img (click)= "onImageClick(supmovies)" [src]="supmovies.posters|imageurlpo" [title]="supmovies.title" class=" poster-image  embed-responsive"/>
+                                    
+                                </div>
+                                
+                            </div>
+                        <div style="float: right; margin-right:5%">
+                            <button hidden class="lrbutton text-white embed-responsive" (click)="scrollRight()">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <h3 class="text-white">Comedy/Animation</h3>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                
+                <h6   [routerLink]="['/allcontents','comedy']"  style="float:right; color: #ed3f38; margin-right: 25%;cursor: pointer;">View More&#8594;</h6>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                    <div class="superhero">
+                            <div style="float: left">
+                                <button hidden class="lrbutton text-white embed-responsive" (click)="scrollLeft()">&#8592;</button> 
+                            </div>
+                            <div #SuperHeroContent class="middle" >
+                                <div class="info-widget embed-responsive" *ngFor="let supmovies of comedyCategory;let i=index" >  
+                                       
+                                    <img (click)= "onImageClick(supmovies)" [src]="supmovies.posters|imageurlpo" [title]="supmovies.title" class=" poster-image  embed-responsive"/>
+                                    
+                                </div>
+                                
+                            </div>
+                        <div style="float: right; margin-right:5%">
+                            <button hidden class="lrbutton text-white embed-responsive" (click)="scrollRight()">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <h3 class="text-white">Horror</h3>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                
+                <h6   [routerLink]="['/allcontents','horror']"  style="float:right; color: #ed3f38; margin-right: 25%;cursor: pointer;">View More&#8594;</h6>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                    <div class="superhero">
+                            <div  style="float: left">
+                                <button hidden class="lrbutton text-white embed-responsive" (click)="scrollLeft()">&#8592;</button> 
+                            </div>
+                            <div #SuperHeroContent class="middle" >
+                                <div class="info-widget embed-responsive" *ngFor="let supmovies of horrorCategory;let i=index" >  
+                                       
+                                    <img (click)= "onImageClick(supmovies)" [src]="supmovies.posters|imageurlpo" [title]="supmovies.title" class=" poster-image  embed-responsive"/>
+                                    
+                                </div>
+                                
+                            </div>
+                        <div  style="float: right; margin-right:5%">
+                            <button hidden class="lrbutton text-white embed-responsive" (click)="scrollRight()">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 ">
+                <h3 class="text-white" >Crime/Drama</h3>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                
+                <h6   [routerLink]="['/allcontents','crime']"  style="float:right; color: #ed3f38; margin-right: 25%;cursor: pointer;">View More&#8594;</h6>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                    <div class="superhero">
+                            <div style="float: left">
+                                <button hidden class="lrbutton text-white embed-responsive" (click)="scrollLeft()">&#8592;</button> 
+                            </div>
+                            <div #SuperHeroContent class="middle" >
+                                <div class="info-widget embed-responsive" *ngFor="let supmovies of crimeCategory;let i=index" >  
+                                       
+                                    <img (click)= "onImageClick(supmovies)" [src]="supmovies.posters|imageurlpo" [title]="supmovies.title" class=" poster-image  embed-responsive"/>
+                                    
+                                </div>
+                                
+                            </div>
+                        <div style="float: right; margin-right:5%">
+                            <button hidden class="lrbutton text-white embed-responsive" (click)="scrollRight()">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 ">
+                <h3 class="text-white" >Romance</h3>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                
+                <h6  [routerLink]="['/allcontents','romance']"  style="float:right; color: #ed3f38; margin-right: 25%;cursor: pointer;">View More&#8594;</h6>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                    <div class="superhero">
+                            <div style="float: left">
+                                <button hidden class="lrbutton text-white embed-responsive" (click)="scrollLeft()">&#8592;</button> 
+                            </div>
+                            <div #SuperHeroContent class="middle" >
+                                <div class="info-widget embed-responsive" *ngFor="let supmovies of romanceCategory;let i=index" >  
+                                       
+                                    <img (click)= "onImageClick(supmovies)" [src]="supmovies.posters|imageurlpo" [title]="supmovies.title" class=" poster-image  embed-responsive"/>
+                                    
+                                </div>
+                                
+                            </div>
+                        <div style="float: right; margin-right:5%">
+                            <button hidden class="lrbutton text-white embed-responsive" (click)="scrollRight()">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {ProductService} from './services/bioscope.services'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +8,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class AppComponent {
   title = 'bio-scope-project';
-  constructor(private router:Router)
+  constructor(private router:Router, private userService: ProductService)
   {
      
   }
@@ -24,6 +25,7 @@ export class AppComponent {
   }
   logout()
   {
+    this.userService.logout(localStorage.getItem("sessionId")).subscribe((response)=>console.log(response));
     localStorage.removeItem("sessionId");
     this.router.navigateByUrl("/loginpage");
   }

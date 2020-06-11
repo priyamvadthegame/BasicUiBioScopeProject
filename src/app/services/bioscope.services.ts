@@ -41,4 +41,20 @@ export class ProductService{
    {
       return this._httpClient.get(`https://raha-bioscope-app.herokuapp.com/movie/id`,{headers:this.httpHeaders.set('Authorization',authorizationKey),params:{"id":movieKey}})
    }
+   logout(authorizationKey:string)
+   {
+      return this._httpClient.get(`https://raha-bioscope-app.herokuapp.com/user/logout`,{headers:this.httpHeaders.set('Authorization',authorizationKey)})
+   }
+   sendCode(emailId:string)
+   {
+      return this._httpClient.post(`https://raha-bioscope-app.herokuapp.com/user/sendcode`,{"email":emailId},{headers:this.httpHeaders})
+   }
+   getMovesByCategory(authorizationKey:string,limit:number,category:string)
+   {
+      return this._httpClient.get(`https://raha-bioscope-app.herokuapp.com/movie/category?category=${category}&limit=${limit}`,{headers:this.httpHeaders.set('Authorization',authorizationKey)})
+   }
+   getMovieByIndustry(authorizationKey:string,limit:number,industry:string)
+   {
+      return this._httpClient.get(`https://raha-bioscope-app.herokuapp.com/movie/industry?i=${industry}&limit=${limit}`,{headers:this.httpHeaders.set('Authorization',authorizationKey)})
+   }
 }

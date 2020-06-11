@@ -6,6 +6,7 @@ import {BioScopeRegisterComponent} from './component/signUpComponent/bioscope.re
 import {BioScopeMainPageComponent}  from './component/mainPageComponents/bioscope.mainpage.component'
 import { BioScopeWatchMovieComponent} from './component/watchMoviesComponent/watchmoviescomponent'
 import {UserProfleComponent} from "./component/profile component/app.profile"
+import {CategoryWiseMovies} from './component/category content page component/bioscope.category'
 const routes: Routes = [{
   path: '',
   redirectTo:'mainpage',
@@ -22,7 +23,7 @@ const routes: Routes = [{
 },
 {
   path:'mainpage',
-  component:BioScopeMainPageComponent
+  component:CategoryWiseMovies
 },
 {
   path:'watch',
@@ -31,6 +32,10 @@ const routes: Routes = [{
 {
   path:'user-profile',
   component:UserProfleComponent
+},
+{
+  path:'allcontents/:category',
+  component:BioScopeMainPageComponent
 }];
 
 

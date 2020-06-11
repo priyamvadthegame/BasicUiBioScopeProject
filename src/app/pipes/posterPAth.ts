@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-@Pipe({name: 'imageurlbc'}) export class CompleteBackDropImageUrl implements PipeTransform
+@Pipe({name: 'imageurlpo'}) export class PosterImageUrl implements PipeTransform
 { 
     transform(value:Array<any>): string
     {       let baseUrl="https://image.tmdb.org/t/p/w500"
@@ -8,7 +8,8 @@ import { Pipe, PipeTransform } from '@angular/core';
             {
                 if(value[i].height>=300&&value[i].width>=300)
                 {
-                    posterurl=value[i].backdroPath
+                    posterurl=value[i].posterPath;
+                    break;
                 
                 }
             }

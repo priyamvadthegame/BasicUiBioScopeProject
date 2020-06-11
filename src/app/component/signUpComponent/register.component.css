@@ -4,7 +4,7 @@
 
 .main-div
 {
-    background-image: url('https://media.giphy.com/media/xT9DPqhJcvC0Z2pzvW/giphy.gif');
+    background-image: url('https://media.giphy.com/media/nJayzH5shTGUM/giphy.gif');
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Numans', sans-serif;
@@ -99,7 +99,7 @@ margin-left: 4px;
 .progress-spinner
 {
     position:fixed;
-    top:70%;
+    top:60%;
     left:47%;
 }
 

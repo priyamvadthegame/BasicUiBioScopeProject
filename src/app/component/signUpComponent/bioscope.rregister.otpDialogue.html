@@ -1,0 +1,33 @@
+
+<div class="main-container">
+    
+    <mat-dialog-content class="mat-typography">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <h2>Please Enter the Otp Send to Your Email Id</h2>
+                </div>
+            </div>
+            <div class="row otp-holder">
+                <ng-otp-input #otp  (onInputChange)="onOtpChange($event)" #otpInput [config]="{length:6,allowNumbersOnly:true}"></ng-otp-input>
+            </div>
+            <div class="row timer1">
+                <countdown #timer  [config]="{ leftTime:60}" (finished)="countdownOver()">&#36;&#33;m&#33;&#58;&#36;&#33;s&#33;</countdown>
+            </div>
+            <button mat-button (click)="resetButton()" *ngIf="resendButton">Resend Code</button>
+            <div *ngIf="error" class="error" class="alert alert-danger">
+                <p>{{errorMessage}}</p>
+            </div>
+            <div *ngIf="success" class="alert alert-success">
+                <p>{{successMessage}}</p>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button *ngIf="!spinner" mat-button mat-dialog-close>Cancel</button>
+        <div  *ngIf="spinner">
+            <p>{{happening}}</p>
+        </div>
+    </mat-dialog-actions>
+      
+</div>
